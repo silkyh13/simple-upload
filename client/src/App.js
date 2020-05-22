@@ -22,6 +22,7 @@ function App() {
       },
     })
     .then((res) => {
+      console.log(res);
       setImages([...images, res.data]);
     })
     .catch((err) => console.error(err.response));
@@ -31,7 +32,10 @@ function App() {
     <div className="App">
       <input type="file" onChange={fileSelectedHandler}/>
       <button onClick={fileUploadHandler}>Upload</button>
-      <p>{test}</p>
+      <div style={{display: "flex", justifyContent: "column"}}>
+        {images.map((image, i) => <img key={i} style={{width:"500px"}} src={image} />)}
+      </div>
+
     </div>
   );
 }

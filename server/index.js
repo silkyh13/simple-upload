@@ -30,7 +30,7 @@ app.post("/api/image", upload.single("image"), (req, res) => {
     Body: req.file.buffer,
   };
 
-  s3.putObject(params, function(err, data) {
+  s3.putObject(params, (err, data) => {
     if (err) {
       console.log(err, err.stack)
     }else {
@@ -38,6 +38,7 @@ app.post("/api/image", upload.single("image"), (req, res) => {
         s3.getSignedUrl("getObject", {
           Bucket: process.env.SPACES_S3_BUCKET,
           Key: `images/${req.file.originalname}`,
+          Expires: 60*60*10
         })
       );
       console.log('yay it uploaded')
