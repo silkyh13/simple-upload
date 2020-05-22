@@ -10,7 +10,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 
-const spacesEndpoint = new AWS.Endpoint('sfo2.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('nyc3.digitaloceanspaces.com');
 const s3 = new AWS.S3({
     endpoint: spacesEndpoint,
     accessKeyId: process.env.SPACES_KEY,
